@@ -8,12 +8,7 @@
       </md-field>
       <md-field>
         <label>Password toggle</label>
-        <md-input v-model="password" type="password"></md-input>
-      </md-field>
-
-      <md-field :md-toggle-password="false">
-        <label>Password field without toggle</label>
-        <md-input v-model="password" type="password"></md-input>
+        <md-input v-model="formData.passWord" type="password"></md-input>
       </md-field>
     </div>
   </div>
@@ -21,14 +16,13 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "home",
   data() {
     return {
       formData: {
-        userName: ""
+        userName: "",
+        passWord: "",
       }
     };
   }
