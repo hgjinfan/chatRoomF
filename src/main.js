@@ -4,11 +4,11 @@ import router from './router'
 import store from './store'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
-
+import axios from 'axios'
 Vue.use(VueMaterial)
 
 Vue.config.productionTip = false
-
+Vue.prototype.$http = axios
 new Vue({
   router,
   store,

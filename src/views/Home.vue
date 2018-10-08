@@ -12,7 +12,7 @@
         <label>Password</label>
         <md-input v-model="formData.passWord" type="password"></md-input>
       </md-field>
-      <md-button class="md-primary sign-in md-raised">sign in</md-button>
+      <md-button class="md-primary sign-in md-raised" @click="signIn()">sign in</md-button>
     </div>
   </div>
 </template>
@@ -26,8 +26,12 @@ export default {
       formData: {
         userName: "",
         passWord: "",
+        avatar: ""
       }
     }
+  },
+  methods: {
+    
   }
 };
 </script>
