@@ -12,7 +12,7 @@
         <label>Password</label>
         <md-input v-model="formData.passWord" type="password"></md-input>
       </md-field>
-      <md-button class="md-primary sign-in md-raised" @click="signIn()">sign in</md-button>
+      <md-button class="md-primary sign-in md-raised" @click="signIn(formData)">sign in</md-button>
     </div>
   </div>
 </template>
@@ -20,6 +20,7 @@
 <script>
 // @ is an alias to /src
 import { userLogin } from "@/service/api.js";
+import {mapMutations,mapState} from 'vuex'
 export default {
   name: "home",
   data() {
@@ -31,33 +32,30 @@ export default {
       }
     };
   },
+  computed: {
+    ...mapState(['isLogin','userInfo'])
+  },
   methods: {
-    async login(formData) {
-      const data = await userLogin(formData);
-      return data;
+    ...mapMutations(['SAVE_USERINFO']),
+    async signIn(formData) {
+      console.log(formData)
+      const res = await userLogin(formData);
+      if(res.data.user_id) {
+        this.SAVE_USERINFO(res.data)
+        console.log(this.userInfo)
+        this.$router.push('/about')
+      }
     }
   },
   mounted() {
-    function test() {
-      return new Promise((resolve, reject) => {
-        setTimeout(() => {
-          resolve("haha");
-        });
-      });
-    }
-    async function t() {
-      const a = await test();
-      console.log(1);
-    }
-    t();
-    console.log(1);
+    
   }
 };
 </script>
 
 <style scoped>
 .home {
-  display: none;
+  /* display: none; */
 }
 .login-form {
   width: 6rem;
