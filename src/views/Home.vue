@@ -19,6 +19,7 @@
 
 <script>
 // @ is an alias to /src
+import { userLogin } from "@/service/api.js";
 export default {
   name: "home",
   data() {
@@ -28,21 +29,41 @@ export default {
         passWord: "",
         avatar: ""
       }
-    }
+    };
   },
   methods: {
-    
+    async login(formData) {
+      const data = await userLogin(formData);
+      return data;
+    }
+  },
+  mounted() {
+    function test() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("haha");
+        });
+      });
+    }
+    async function t() {
+      const a = await test();
+      console.log(1);
+    }
+    t();
+    console.log(1);
   }
 };
 </script>
 
 <style scoped>
-  .login-form {
-    width: 6rem;
-    margin: 0 auto;
-  }
-  .sign-in {
-    width: 5rem;
-    
-  }
+.home {
+  display: none;
+}
+.login-form {
+  width: 6rem;
+  margin: 0 auto;
+}
+.sign-in {
+  width: 5rem;
+}
 </style>
