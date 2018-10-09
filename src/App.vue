@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <mock></mock>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -18,3 +19,12 @@
   font-size: .28rem;
 }
 </style>
+
+<script>
+import mock from '@/mock/mock'
+export default {
+  components: {
+    mock
+  }
+}
+</script>
